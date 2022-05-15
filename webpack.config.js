@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const {HotModuleReplacementPlugin} = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackInjector = require('html-webpack-injector');
 // const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 // const { extendDefaultPlugins } = require("svgo");
 
@@ -16,12 +17,13 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
-        // assetModuleFilename: pathData => {
-        //     const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
-        //     return `assets/${filepath}/[hash][ext]`;
-        // },
-            assetModuleFilename: 'assets/[hash][ext]',
+        assetModuleFilename: pathData => {
+            const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+            return `assets/${filepath}/[hash][ext]`;
+        },
+        //     assetModuleFilename: 'assets/[hash][ext]',
         clean: true,
+        publicPath: "",
     },
     optimization: {
         splitChunks: {
@@ -46,8 +48,14 @@ module.exports = {
         new HtmlWebpackPlugin({
          //   title: 'webpack Boilerplate',
             template: path.resolve(__dirname, './src/pug/index.pug'), // шаблон
-          //  filename: 'index.html', // название выходного файла
+            filename: 'index.html', // название выходного файла
+            chunks: ["index"],
+            chunksConfig: {             // асинхронность
+                async: ["index"]
+            }
+
         }),
+        new HtmlWebpackInjector(),
         // new CleanWebpackPlugin(),
         new HotModuleReplacementPlugin(),
     ],
