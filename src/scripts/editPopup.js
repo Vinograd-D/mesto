@@ -17,4 +17,4 @@ let statusSaveEdit = () => {
 }
 
 buttonEdit.onclick = statusEdit()
-buttonSaveEdit.onclick = alert('hello')
+buttonSaveEdit.onclick = statusSaveEdit()

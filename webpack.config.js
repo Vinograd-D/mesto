@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const {HotModuleReplacementPlugin} = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackInjector = require('html-webpack-injector');
 // const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 // const { extendDefaultPlugins } = require("svgo");
 
@@ -47,9 +48,14 @@ module.exports = {
         new HtmlWebpackPlugin({
          //   title: 'webpack Boilerplate',
             template: path.resolve(__dirname, './src/pug/index.pug'), // шаблон
-          //  filename: 'index.html', // название выходного файла
+            filename: 'index.html', // название выходного файла
+            chunks: ["index"],
+            chunksConfig: {             // асинхронность
+                async: ["index"]
+            }
 
         }),
+        new HtmlWebpackInjector(),
         // new CleanWebpackPlugin(),
         new HotModuleReplacementPlugin(),
     ],
