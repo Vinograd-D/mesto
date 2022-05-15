@@ -1,0 +1,13 @@
+.popup(id="popup")
+    a.popup__overlay(href='#header')
+    form(name="edit-profile").popup__body
+        div.popup__content
+            p.popup__title Редактировать профиль
+            label.popup__form-field
+                input#popup__name-input.popup__input(name='name' placeholder='Имя' required='' maxlength='50' type='text')
+            label.popup__form-field
+                input#popup__job-input.popup__input(name='job' placeholder='Профессия' required='' maxlength='150' type='text')
+            button.popup__button(type='submit')
+                | Сохранить
+            button.popup__close-button(type='button')
+

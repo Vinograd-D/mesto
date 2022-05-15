@@ -1,10 +1,13 @@
-include utils/mixin
+extends common/layout
 
-doctype html
-html(lang='ru')
-    head
-        title title
-    body
-        .root
+block variables
+    - var pageTitle = 'Mesto'
 
-        img(src=require("../images/example.png") alt="example")
+block content
+    main.content
+        include includes/profile
+        include includes/elements
+
+block popup
+    include includes/popup/popup-edit/popup-edit
+block scripts

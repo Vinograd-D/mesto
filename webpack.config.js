@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const {HotModuleReplacementPlugin} = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
@@ -10,16 +10,17 @@ let mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 // console.log(mode + ' mode')
 module.exports = {
     entry: {
-        index: path.resolve(__dirname, './src/index.js'),
+        index: path.resolve(__dirname, './src/pages/index.js'),
     },
 
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
-        assetModuleFilename: pathData => {
-            const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
-            return `assets/${filepath}/[hash][ext]`;
-        },
+        // assetModuleFilename: pathData => {
+        //     const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+        //     return `assets/${filepath}/[hash][ext]`;
+        // },
+            assetModuleFilename: 'assets/[hash][ext]',
         clean: true,
     },
     optimization: {
