@@ -16,12 +16,13 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
-        // assetModuleFilename: pathData => {
-        //     const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
-        //     return `assets/${filepath}/[hash][ext]`;
-        // },
-            assetModuleFilename: 'assets/[hash][ext]',
+        assetModuleFilename: pathData => {
+            const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+            return `assets/${filepath}/[hash][ext]`;
+        },
+        //     assetModuleFilename: 'assets/[hash][ext]',
         clean: true,
+        publicPath: "",
     },
     optimization: {
         splitChunks: {
@@ -47,6 +48,7 @@ module.exports = {
          //   title: 'webpack Boilerplate',
             template: path.resolve(__dirname, './src/pug/index.pug'), // шаблон
           //  filename: 'index.html', // название выходного файла
+
         }),
         // new CleanWebpackPlugin(),
         new HotModuleReplacementPlugin(),
