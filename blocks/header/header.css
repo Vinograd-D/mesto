@@ -1,0 +1,23 @@
+.header {
+  margin: 45px 0 0
+}
+
+.header:after {
+  content: '';
+  display: block;
+  border-bottom: 1px solid #545454;
+  padding-top: 41px;
+  opacity: .7
+}
+
+@media (max-width: 1024px) {
+  .header {
+    margin: 45px 27px 0
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin: 28px 27px 0
+  }
+}

@@ -1,0 +1,10 @@
+.popup_open {
+  opacity: 1;
+  visibility: visible
+}
+
+.popup_open .popup__content {
+  -webkit-transform: perspective(600px) translate(0, 0%) rotateX(0deg);
+  transform: perspective(600px) translate(0, 0%) rotateX(0deg);
+  opacity: 1
+}
