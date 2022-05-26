@@ -1,10 +1,16 @@
 .popup_open {
   opacity: 1;
-  visibility: visible
+  visibility: visible;
+  height: 100%;
+  width: 100%;
+  display: block; /* property breaks animation*/
 }
+
 
 .popup_open .popup__content {
   -webkit-transform: perspective(600px) translate(0, 0%) rotateX(0deg);
   transform: perspective(600px) translate(0, 0%) rotateX(0deg);
   opacity: 1
 }
+
+

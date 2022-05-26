@@ -3,7 +3,11 @@
   line-height: 22px;
   color: #fff;
   grid-area: subtitle;
-  margin: 0
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 336px;
 }
 
 @media (max-width: 768px) {

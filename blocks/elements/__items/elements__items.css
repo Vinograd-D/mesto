@@ -9,4 +9,5 @@
   grid-template-columns:repeat(auto-fit, minmax(282px, 1fr));
   justify-items: center;
   padding: 0;
+  margin: 0;
 }

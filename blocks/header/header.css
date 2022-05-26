@@ -1,5 +1,5 @@
 .header {
-  margin: 45px 0 0
+  margin: 45px 0 0;
 }
 
 .header:after {
@@ -7,17 +7,23 @@
   display: block;
   border-bottom: 1px solid #545454;
   padding-top: 41px;
-  opacity: .7
+  opacity: .7;
+  position: relative;
+  left: 27px;
 }
 
-@media (max-width: 1024px) {
-  .header {
-    margin: 45px 27px 0
-  }
-}
+/*@media (max-width: 1024px) {*/
+/*  .header {*/
+/*    margin: 45px 27px 0;*/
+/*  }*/
+/*}*/
 
 @media (max-width: 768px) {
   .header {
-    margin: 28px 27px 0
+    margin: 28px 0 0;
+  }
+  .header:after {
+    padding-top: 31px;
+    left: 0;
   }
 }

@@ -20,74 +20,69 @@
 
 			<h1 class="profile__name">Жак-Ив Кусто</h1>
 			<p class="profile__subtitle">Исследователь океана</p>
-			<button class="profile__edit-button" type="button" name="edit-button" onclick="statusEdit();"></button>
+			<button class="profile__edit-button" type="button" name="edit-button" onclick="statusEdit();" aria-label="кнопка редактирование профиля"></button>
 		</div>
-		<button class="profile__add-button" type="button" name="add-button"></button>
+		<button class="profile__add-button" type="button" name="add-button" aria-label="кнопка добавление картинки"></button>
 	</section>
 	<section class="elements">
 		<ul class="elements__items">
 			<li class="elements__item">
-				<img class="elements__picture" src="images/20a547e10df58e6b17a2.jpg" alt="Строение между гор">
+				<img class="elements__picture" src="images/20a547e10df58e6b17a2.jpg" alt="Некое строение похожее на храм на горном хребте посреди лесного массива">
 				<div class="elements__description">
 					<h2 class="elements__title">Карачаевск</h2>
-					<button class="elements__like-button" type="button"></button>
+					<button class="elements__like-button" type="button" aria-label="лайк"></button>
 				</div>
 			</li>
 			<li class="elements__item">
-				<img class="elements__picture" src="images/d54b62f898c9abf6e7bc.jpg" alt="Гора Эльбрус">
+				<img class="elements__picture" src="images/d54b62f898c9abf6e7bc.jpg" alt="Гора Эльбрус вдалеке на рассвете">
 				<div class="elements__description">
 					<h2 class="elements__title">Гора Эльбрус</h2>
-					<button class="elements__like-button" type="button"></button>
+					<button class="elements__like-button" type="button" aria-label="лайк"></button>
 				</div>
 			</li>
 			<li class="elements__item">
-				<img class="elements__picture" src="images/04e452403949b83bfb13.jpg" alt="Горы">
+				<img class="elements__picture" src="images/04e452403949b83bfb13.jpg" alt="Горы на фоне темных туч. На ближнем виден лес, на дальнем снег и пик.">
 				<div class="elements__description">
 					<h2 class="elements__title">Домбай</h2>
-					<button class="elements__like-button" type="button"></button>
+					<button class="elements__like-button" type="button" aria-label="лайк"></button>
 				</div>
 			</li>
 			<li class="elements__item">
-				<img class="elements__picture" src="images/d54b62f898c9abf6e7bc.jpg" alt="Гора Эльбрус">
+				<img class="elements__picture" src="images/d54b62f898c9abf6e7bc.jpg" alt="Гора Эльбрус вдалеке на рассвете">
 				<div class="elements__description">
 					<h2 class="elements__title">Гора Эльбрус</h2>
-					<button class="elements__like-button" type="button"></button>
+					<button class="elements__like-button" type="button" aria-label="лайк"></button>
 				</div>
 			</li>
 			<li class="elements__item">
-				<img class="elements__picture" src="images/04e452403949b83bfb13.jpg" alt="Горы">
+				<img class="elements__picture" src="images/04e452403949b83bfb13.jpg" alt="Горы на фоне темных туч. На ближнем виден лес, на дальнем снег и пик.">
 				<div class="elements__description">
 					<h2 class="elements__title">Домбай</h2>
-					<button class="elements__like-button" type="button"></button>
+					<button class="elements__like-button" type="button" aria-label="лайк"></button>
 				</div>
 			</li>
 			<li class="elements__item">
-				<img class="elements__picture" src="images/20a547e10df58e6b17a2.jpg" alt="Строение между гор">
+				<img class="elements__picture" src="images/20a547e10df58e6b17a2.jpg" alt="Некое строение похожее на храм на горном хребте посреди лесного массива">
 				<div class="elements__description">
-					<h2 class="elements__title">Карачаево-Черкессия</h2>
-					<button class="elements__like-button" type="button"></button>
+					<h2 class="elements__title">Карачаево-Черкессия </h2>
+					<button class="elements__like-button" type="button" aria-label="лайк"></button>
 				</div>
 			</li>
 		</ul>
 	</section>
-	
+
 </main>
 <footer class="footer">
-	<div class="footer__copyright">© 2022 Mesto Russia</div>
+	<p class="footer__copyright">© 2022 Mesto Russia</p>
 </footer>
 <div class="popup" id="popup">
-	<a class="popup__area" href="#header"></a>
-	<form class="popup__body" name="edit-profile">
+	<form class="popup__body" name="edit-profile" action="" method="post">
 		<div class="popup__content">
-			<p class="popup__title">Редактировать профиль</p>
-			<label class="popup__form-field">
+			<h2 class="popup__title">Редактировать профиль</h2>
 				<input class="popup__input" id="popup__name-input" name="name" placeholder="Имя" required maxlength="50">
-			</label>
-			<label class="popup__form-field">
 				<input class="popup__input" id="popup__descr-input" name="description" placeholder="Описание" required
 							 maxlength="150">
-			</label>
-			<button class="popup__button" type="button" onclick="statusSaveEdit();">Сохранить</button>
+			<button class="popup__button" type="submit" onclick="statusSaveEdit();">Сохранить</button>
 			<button class="popup__close-button" type="button"></button>
 		</div>
 	</form>
