@@ -1,7 +1,7 @@
 let profileInfo = document.querySelector('.profile__info')
 
 // позволяет редактировать текст в браузере при клике
-// document.body.addEventListener('click', e => e.target.contentEditable = true);
+document.body.addEventListener('click', e => e.target.contentEditable = true);
 
 let buttonEdit = document.querySelector('.profile__edit-button')
 let buttonSaveEdit = document.querySelector('.popup__button')
