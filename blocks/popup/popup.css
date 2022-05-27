@@ -9,4 +9,6 @@
   -webkit-transition: all .8s ease 0s;
   transition: all .8s ease 0s;
   display: none;
+  background: #0000008c;
 }
+

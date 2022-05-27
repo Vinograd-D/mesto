@@ -28,7 +28,6 @@
 
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/_open/popup_open.css";
-@import "../blocks/popup/__area/popup__area.css";
 @import "../blocks/popup/__body/popup__body.css";
 @import "../blocks/popup/__content/popup__content.css";
 @import "../blocks/popup/__title/popup__title.css";

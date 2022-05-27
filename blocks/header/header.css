@@ -9,7 +9,8 @@
   padding-top: 41px;
   opacity: .7;
   position: relative;
-  left: 27px;
+  /*left: 27px;*/
+  /*width: calc(100% - (27px * 2))*/
 }
 
 /*@media (max-width: 1024px) {*/
@@ -25,5 +26,6 @@
   .header:after {
     padding-top: 31px;
     left: 0;
+    /*width: 100%;*/
   }
 }

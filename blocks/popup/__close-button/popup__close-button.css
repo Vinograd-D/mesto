@@ -7,6 +7,7 @@
   background-image: url(../../../images/ad98de32e342afafa118.svg);
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  background-size: contain;
   padding: 0;
   top: -40px;
   right: -40px;
@@ -25,7 +26,7 @@
     width: 20px;
     height: 20px;
     right: 0;
-    top: -35px;
+    top: -34px;
   }
 }
 
