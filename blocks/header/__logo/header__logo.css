@@ -11,24 +11,4 @@
 }
 
 
-/*let popup = (bool) => {*/
-/*  let pop = document.querySelector('.popup')*/
-/*  if (bool == "add") {*/
-/*    pop.classList.add('popup_open')*/
-/*    } else if(bool == "rm") {*/
-/*        pop.classList.remove('popup_open')*/
-/*    } else {*/
-/*        console.log('error!')*/
-/*    }*/
-/*}*/
 
-
-/*let btn = [document.querySelector('.profile__edit-button'), document.querySelector('.popup__close-button')]*/
-/*let pop = document.querySelector('.popup')*/
-
-/*btn[0].onclick = function()  {*/
-/*  pop . classList . add('popup_open')*/
-/*}*/
-/*btn[1].onclick = function() {*/
-/*  pop.classList.remove('popup_open')*/
-/*}*/

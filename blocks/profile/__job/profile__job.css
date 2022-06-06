@@ -1,4 +1,4 @@
-.profile__subtitle {
+.profile__job {
   font-size: 18px;
   line-height: 22px;
   color: #fff;
@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 768px) {
-  .profile__subtitle {
+  .profile__job {
     font-size: 14px;
     line-height: 17px;
     text-align: center
