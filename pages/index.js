@@ -105,17 +105,19 @@ const initCards = [
 ];
 
 let containerPhotos = document.querySelector('.elements__items')
-let createFrag = document.createDocumentFragment()
+let templateElement = document.querySelector('#elementOfCards').content
+let element = templateElement.querySelector('.elements__item').cloneNode(true)
+let fragment = document.createDocumentFragment()
 
 initCards.forEach(function(i, index, originalArray) {
-
-  createFrag.appendChild(containerPhotos);
-  containerPhotos.querySelector('.elements_title').textContent = i.name
-  containerPhotos.querySelector('.elements_picture').src = i.link;
-  containerPhotos.querySelector('.elements_picture').alt = i.name;
+  let element = templateElement.querySelector('.elements__item').cloneNode(true)
+  element.querySelector('.elements__title').textContent = i.name
+  element.querySelector('.elements__picture').src = i.link;
+  element.querySelector('.elements__picture').alt = i.name;
+  containerPhotos.appendChild(element);
 });
 
-containerPhotos.appendChild(createFrag);
+// containerPhotos.appendChild(fragment);
 
 /*let container = document.querySelector('.elements__items')
 let createFrag = document.createDocumentFragment()
