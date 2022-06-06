@@ -53,6 +53,17 @@ let statusSaveEdit = () => {
   job.textContent = jobInput.value
 }
 buttonEdit.onclick = statusEdit()
-buttonSaveEdit.onclick = statusSaveEdit()
+// buttonSaveEdit.onclick = statusSaveEdit()
 
 
+function formSubmitHandler (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Так мы можем определить свою логику отправки.
+  // О том, как это делать, расскажем позже.
+  statusSaveEdit()
+  window.close()
+}
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка»
+
+bodyPopup.addEventListener('submit', formSubmitHandler)
