@@ -1,7 +1,9 @@
-const btn = [document.querySelector('.profile__edit-button'),
+const btn = [
+  document.querySelector('.profile__edit-button'),
+  document.querySelector('.profile__add-button'),
 ]
-const popupClose = document.querySelector('.popup__close-button')
-const pop = document.querySelector('.popup')
+const popupClose = document.querySelectorAll('.popup__close-button')
+const pop = document.querySelectorAll('.popup')
 const buttonEdit = document.querySelector('.profile__edit-button')
 const name = document.querySelector('.profile__name')
 const job = document.querySelector('.profile__job')
@@ -25,33 +27,20 @@ let statusSaveEdit = () => {
 
 
 // закрытие попапа на фон
-function overlay() {
+function overlay(i) {
   const createOverlay = `<div class="popup__overlay"></div>`
-  pop.insertAdjacentHTML("afterbegin", createOverlay)
-  let popupOverlay = pop.querySelector('.popup__overlay')
+  pop[i].insertAdjacentHTML("afterbegin", createOverlay)
+  let popupOverlay = pop[i].querySelector('.popup__overlay')
   popupOverlay.setAttribute('style', 'width: 100%; height: 100%; position: fixed;')
   document.addEventListener('click', (e) => {
     if(e.target === popupOverlay) {
-      pop.classList.remove('popup_open')
-      pop.classList.remove('popup__overlay')
+      pop[i].classList.remove('popup_open')
+      pop[i].classList.remove('popup__overlay')
     }
   })
 }
 
-// открытие попапа
-function open() {
-  pop.classList.add('popup_open')
-  document.addEventListener('keydown', _handleEscClose)
-  overlay()
 
-}
-
-// закрытие попапа
-function close() {
-  pop.classList.remove('popup_open')
-  document.removeEventListener('keydown', _handleEscClose)
-  pop.classList.remove('popup__overlay')
-}
 // закрытие попапа на кнопку ескейп
 function _handleEscClose(event) {
   const key = event.key
@@ -60,9 +49,21 @@ function _handleEscClose(event) {
   }
 }
 
-// переделать на forEach
-btn[0].addEventListener('click', open)
-popupClose.addEventListener('click', close)
+// открытие попапа
+for(let i = 0; i < btn.length; i++){
+  btn[i].addEventListener("click", function(event) {
+    pop[i].classList.add('popup_open')
+    document.addEventListener('keydown', _handleEscClose)
+    overlay(i)
+  } )
+}
+// закрытие попапа
+for(let i = 0; i < popupClose.length; i++){
+  popupClose[i].addEventListener("click", function(event) {
+    pop[i].classList.remove('popup_open')
+    document.removeEventListener('keydown', _handleEscClose)
+  } )
+}
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -108,12 +109,12 @@ let containerPhotos = document.querySelector('.elements__items')
 let templateElement = document.querySelector('#elementOfCards').content
 
 
-initCards.forEach(function(i, index, originalArray) {
+initCards.forEach(function(i) {
   let element = templateElement.querySelector('.elements__item').cloneNode(true)
   element.querySelector('.elements__title').textContent = i.name
   element.querySelector('.elements__picture').src = i.link;
   element.querySelector('.elements__picture').alt = i.name;
   containerPhotos.appendChild(element);
-});
+})
 
 
