@@ -1,14 +1,13 @@
-let btn = [document.querySelector('.profile__edit-button'), document.querySelector('.popup__close-button')]
-let pop = document.querySelector('.popup')
-
-let buttonEdit = document.querySelector('.profile__edit-button')
-// let buttonSaveEdit = document.querySelector('.popup-btn')
-let name = document.querySelector('.profile__name')
-let job = document.querySelector('.profile__job')
-let nameInput = document.querySelector('#popup__name-input')
-let jobInput = document.querySelector('#popup__job-input')
-
-let form = document.querySelector('.popup__body')
+const btn = [document.querySelector('.profile__edit-button'),
+]
+const popupClose = document.querySelector('.popup__close-button')
+const pop = document.querySelector('.popup')
+const buttonEdit = document.querySelector('.profile__edit-button')
+const name = document.querySelector('.profile__name')
+const job = document.querySelector('.profile__job')
+const nameInput = document.querySelector('#popup__name-input')
+const jobInput = document.querySelector('#popup__job-input')
+const form = document.querySelector('.popup__body')
 
 // запись данных профиля в модальное окно и вызов
 let statusEdit = () => {
@@ -61,16 +60,9 @@ function _handleEscClose(event) {
   }
 }
 
-
-
-// document.body.click(function(e) {
-//   if(document.querySelector(e.target).closest(".popup_open").length==0)
-//     pop.classList.remove('popup_open');
-// });
-
 // переделать на forEach
 btn[0].addEventListener('click', open)
-btn[1].addEventListener('click', close)
+popupClose.addEventListener('click', close)
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -81,3 +73,65 @@ function formSubmitHandler (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 form.addEventListener('submit', formSubmitHandler)
+
+
+
+// изначальные фото
+const initCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+let containerPhotos = document.querySelector('.elements__items')
+let createFrag = document.createDocumentFragment()
+
+initCards.forEach(function(i, index, originalArray) {
+
+  createFrag.appendChild(containerPhotos);
+  containerPhotos.querySelector('.elements_title').textContent = i.name
+  containerPhotos.querySelector('.elements_picture').src = i.link;
+  containerPhotos.querySelector('.elements_picture').alt = i.name;
+});
+
+containerPhotos.appendChild(createFrag);
+
+/*let container = document.querySelector('.elements__items')
+let createFrag = document.createDocumentFragment()
+let imgArray = () => {
+  let img = document.createElement('img')
+  img.classList.add('photo-grid__item')
+}
+
+
+
+initCards.forEach(function(i, index, originalArray) {
+  let img = document.createElement('img')
+  img.classList.add('photo-grid__item')
+  img.src = i.link;
+  img.alt = i.name;
+  createFrag.appendChild(img);
+});
+
+container.appendChild(createFrag);*/
