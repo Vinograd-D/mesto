@@ -42,3 +42,17 @@ btn[1].addEventListener('click', close)
 
 
 
+
+let statusEdit = () => {
+  nameInput.value = name.textContent
+  jobInput.value = job.textContent
+}
+
+let statusSaveEdit = () => {
+  name.textContent = nameInput.value
+  job.textContent = jobInput.value
+}
+buttonEdit.onclick = statusEdit()
+buttonSaveEdit.onclick = statusSaveEdit()
+
+
