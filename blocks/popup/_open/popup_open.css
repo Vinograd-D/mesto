@@ -1,9 +1,6 @@
 .popup_open {
   opacity: 1;
   visibility: visible;
-  height: 100%;
-  width: 100%;
-  display: block; /* property breaks animation*/
 }
 
 

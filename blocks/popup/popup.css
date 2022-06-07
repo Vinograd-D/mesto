@@ -1,14 +1,17 @@
 .popup {
   position: fixed;
-  width: 0;
-  height: 0;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all .8s ease 0s;
   transition: all .8s ease 0s;
-  display: none;
+
   background: #0000008c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
