@@ -15,7 +15,11 @@ const jobInput = document.querySelector('#popup__job-input')
 const nameOfPhotoInput = document.querySelector('#popup__name-of-photo-input')
 const linkInput = document.querySelector('#popup__link-input')
 
+const templateElement = document.querySelector('#elementOfCards').content
+const containerPhotos = document.querySelector('.elements__items')
 
+const popupImage = pop[2].querySelector('.popup__image')
+const popupTitle = pop[2].querySelector('.popup__figcaption')
 // запись данных профиля в модальное окно и вызов
 let statusEdit = () => {
   nameInput.value = name.textContent
@@ -30,23 +34,7 @@ let statusSaveEdit = () => {
   job.textContent = jobInput.value
 }
 
-
-// закрытие попапа на фон
-/*
-function overlay(i) {
-  const createOverlay = `<div class="popup__overlay"></div>`
-  pop[i].insertAdjacentHTML("afterbegin", createOverlay)
-  let popupOverlay = pop[i].querySelector('.popup__overlay')
-  popupOverlay.setAttribute('style', 'width: 100%; height: 100%; position: fixed;')
-  document.addEventListener('click', (i) => {
-    if (i.target === popupOverlay) {
-      pop[i].classList.toggle('popup_open')
-      pop[i].classList.toggle('popup__overlay')
-    }
-  }) // некорректно работает после перебора. не удаляется
-}
-*/
-
+//---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
 
 // закрытие попапа на кнопку ескейп
 function _handleEscClose(evt) {
@@ -84,11 +72,11 @@ function formSubmitHandler(evt) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-form.addEventListener('submit', formSubmitHandler)
 
+//---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
 
-// изначальные фото
-const initCards = [
+// required photos
+const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -115,35 +103,40 @@ const initCards = [
   }
 ];
 
-const containerPhotos = document.querySelector('.elements__items')
-const templateElement = document.querySelector('#elementOfCards').content
+//---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
+// creating and add cards
+function renderCards(nameValue, linkValue) {
+  const el = templateElement.querySelector('.elements__item').cloneNode(true)
+  let title = el.querySelector('.elements__title')
+  let link = el.querySelector('.elements__picture')
 
-function likeButton(el) {
-  el.querySelector('.elements__like-button').addEventListener('click', function (e) {
-    e.target.classList.toggle('elements__like-button_active')
-  })
+  title.textContent = nameValue
+  link.src = linkValue
+  link.alt = nameValue
+
+  el.querySelector('.elements__like-button').addEventListener('click', e => e.target.classList.toggle('elements__like-button_active')) // like
+
+//delete
+
+  el.addEventListener('click', () => {
+    popupImage.src = linkValue
+    popupImage.alt = nameValue
+    popupTitle.textContent = nameValue
+    pop[2].classList.add('popup_open')
+  } )
+
+return el
 }
 
-initCards.forEach(function (i) {
-  let element = templateElement.querySelector('.elements__item').cloneNode(true)
-  element.querySelector('.elements__title').textContent = i.name
-  element.querySelector('.elements__picture').src = i.link;
-  element.querySelector('.elements__picture').alt = i.name;
-  containerPhotos.appendChild(element);
-  likeButton(element)
+initialCards.forEach((i) => {
+  containerPhotos.append(renderCards(i.name, i.link));
 })
 
 
-popupButtonSave[1].addEventListener('click', function (evt) {
+pop[1].addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const templateElement = document.querySelector('#elementOfCards').content
-  let element = templateElement.querySelector('.elements__item').cloneNode(true)
-  element.querySelector('.elements__title').textContent = nameOfPhotoInput.value
-  element.querySelector('.elements__picture').src = linkInput.value
-  element.querySelector('.elements__picture').alt = nameOfPhotoInput.value
-  containerPhotos.appendChild(element);
-  nameOfPhotoInput.value = ''
-  linkInput.value = ''
-  likeButton(element)
+  containerPhotos.prepend(renderCards(nameOfPhotoInput.value, linkInput.value));
   pop[1].classList.remove('popup_open')
-})
+  pop[1].reset();
+});
+
