@@ -118,7 +118,7 @@ function renderCards(nameValue, linkValue) {
 
 //delete
 
-  el.addEventListener('click', () => {
+  link.addEventListener('click', () => {
     popupImage.src = linkValue
     popupImage.alt = nameValue
     popupTitle.textContent = nameValue
