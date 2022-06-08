@@ -50,6 +50,7 @@ function open(pop) {
   pop.classList.add('popup_open')
   escClose(pop)
 }
+
 //function closed modal window
 function close(pop) {
   pop.classList.remove('popup_open')
@@ -117,9 +118,9 @@ function renderItems(nameValue, linkValue) {
     popupImage.alt = nameValue
     popupTitle.textContent = nameValue
     open(pop[2])
-  } )
+  })
 
-return el
+  return el
 }
 
 initialCards.forEach((i) => {
@@ -128,19 +129,20 @@ initialCards.forEach((i) => {
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
 //      Buttons
-//
+// submit 1
 buttonEditProfile.addEventListener('submit', function (evt) {
   evt.preventDefault();
   statusSaveEdit()
   close(pop[0])
 });
-//
+// submit 2
 buttonAddCard.addEventListener('submit', function (evt) {
   evt.preventDefault();
   containerPhotos.prepend(renderItems(nameOfPhotoInput.value, linkInput.value));
   close(pop[1])
   this.reset();
 });
+//
 // call modal window "edit profile"
 btn[0].addEventListener('click', () => {
   statusEdit()
@@ -153,8 +155,8 @@ btn[1].addEventListener('click', () => {
 })
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
-// close
-popContent.forEach(container  =>
+// close event
+popContent.forEach(container =>
   container.addEventListener('click', e =>
     e.stopPropagation() // метод, который бойкотирует события
   )
@@ -163,7 +165,7 @@ popWrapperImage.addEventListener('click', e => e.stopPropagation())
 
 
 // вызов на значок икс
-popupClose.forEach( el =>
+popupClose.forEach(el =>
   el.addEventListener('click', e =>
     close(e.target.closest('.popup')
     )
