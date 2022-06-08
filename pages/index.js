@@ -7,12 +7,12 @@ const btn = [
 ]
 const popupClose = document.querySelectorAll('.popup__close-button')
 
-const buttonEditProfile = document.forms.editProfile
+const buttonEditProfile = document.querySelector('form[name = "editProfile"]')
 const buttonAddCard = document.querySelector('form[name = "addCard"]')
 
 const pop = document.querySelectorAll('.popup')
 const popContent = document.querySelectorAll('.popup__content')
-const changeLikeButton = document.querySelector('.elements__like-button')
+// const changeLikeButton = document.querySelector('.elements__like-button')
 
 const name = document.querySelector('.profile__name')
 const job = document.querySelector('.profile__job')
@@ -34,12 +34,15 @@ const statusEdit = () => {
   nameInput.value = name.textContent
   jobInput.value = job.textContent
 }
-
-// перезапись данных с модального окна на html страницу
+// перезапись данных с модального окна на страницу
 const statusSaveEdit = () => {
   name.textContent = nameInput.value
   job.textContent = jobInput.value
 }
+// delete
+const deleteItem = (e) => e.target.closest("li").remove()
+// like
+const likeItem = (e) => e.target.classList.toggle("elements__like-button_active")
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
 //        functions
 // function opened modal window
@@ -53,7 +56,7 @@ function close(pop) {
   escClose(pop)
 }
 
-// закрытие попапа на кнопку ескейп
+// close modal push esc
 function escClose(pop) {
   const escape = (e) => {
     if (e.which === 27)
@@ -62,6 +65,7 @@ function escClose(pop) {
   }
   document.addEventListener('keydown', escape)
 }
+
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
 // array of image objs
@@ -94,19 +98,19 @@ const initialCards = [
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
 // creating and add cards
-function renderCards(nameValue, linkValue) {
+function renderItems(nameValue, linkValue) {
   const el = templateElement.querySelector('.elements__item').cloneNode(true)
   let title = el.querySelector('.elements__title')
   let link = el.querySelector('.elements__picture')
   const changeLikeButton = el.querySelector('.elements__like-button')
+  const deleteButton = el.querySelector('.elements__delete-button')
   title.textContent = nameValue
   link.src = linkValue
   link.alt = nameValue
 
-  changeLikeButton.addEventListener('click', e =>
-    e.target.classList.toggle('elements__like-button_active')) // like
+  changeLikeButton.addEventListener('click', (e) => likeItem(e))// like
 
-//delete
+  deleteButton.addEventListener('click', (e) => deleteItem(e))//delete
 
   link.addEventListener('click', () => { // popupImage
     popupImage.src = linkValue
@@ -119,7 +123,7 @@ return el
 }
 
 initialCards.forEach((i) => {
-  containerPhotos.append(renderCards(i.name, i.link));
+  containerPhotos.append(renderItems(i.name, i.link));
 })
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
@@ -133,7 +137,7 @@ buttonEditProfile.addEventListener('submit', function (evt) {
 //
 buttonAddCard.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  containerPhotos.prepend(renderCards(nameOfPhotoInput.value, linkInput.value));
+  containerPhotos.prepend(renderItems(nameOfPhotoInput.value, linkInput.value));
   close(pop[1])
   this.reset();
 });
