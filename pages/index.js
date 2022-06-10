@@ -13,7 +13,6 @@ const popupEditProfile = document.querySelector('.popup_action_edit-profile')
 const popupAddCard = document.querySelector('.popup_action_add-card')
 const popupImage = document.querySelector('.popup_action_zoomer')
 const popupsContent = document.querySelectorAll('.popup__content')
-// const changeLikeButton = document.querySelector('.elements__like-button')
 
 const name = document.querySelector('.profile__name')
 const job = document.querySelector('.profile__job')
@@ -49,7 +48,18 @@ const likeItem = (e) => e.target.classList.toggle("elements__like-button_active"
 // function opened modal window
 function openPopup(pop) {
   pop.classList.add('popup_open')
- // document.addEventListener('keydown', handlerEscClose)
+//  document.addEventListener('keydown', handlerEscClose)
+ // document.addEventListener('keydown', handlerEscClose.bind(null, pop))
+//   document.addEventListener('keydown', function(e) {
+//     let keyCode = e.key
+//     console.log('d ' + keyCode)
+//     if (keyCode === 'Escape') {
+//       console.log(keyCode)
+//       closePopup(pop)
+ // window.close()
+ // this.close()
+ //     }
+ //  })
 }
 
 //function closed modal window
@@ -58,12 +68,18 @@ function closePopup(pop) {
  // document.removeEventListener('keydown', handlerEscClose)
 }
 
+
 // close modal push esc
-/*function handlerEscClose(e, pop) {
-    if (e.key === 'Escape') {
-     closePopup(pop)
-    }
-}*/
+// function handlerEscClose(pop ,e) { //  не совсем понимаю но кажется они не видят друг друга хоть и закрывает
+//   let keyCode = e.key
+//   console.log('d ' + keyCode)
+//       if (keyCode === 'Escape')  {
+//         console.log(keyCode)
+//         closePopup(popupEditProfile)
+//         closePopup(popupAddCard)
+//         closePopup(popupImage)
+//     }
+// }
 
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
@@ -170,12 +186,12 @@ popupCloseButtons.forEach(el =>
   )
 )
 // overlay
-const popupLists = [
+const popupsList = [
   popupEditProfile,
   popupAddCard,
   popupImage
 ];
-popupLists.forEach(el =>
+popupsList.forEach(el =>
   el.addEventListener('click', e =>
     closePopup(e.target.closest('.popup')
     )
