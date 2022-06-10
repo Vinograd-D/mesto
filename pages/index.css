@@ -30,6 +30,7 @@
 @import "../blocks/footer/__copyright/footer__copyright.css";
 
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/_action/popup_action_zoomer.css";
 @import "../blocks/popup/_open/popup_open.css";
 @import "../blocks/popup/__content/popup__content.css";
 @import "../blocks/popup/__title/popup__title.css";
