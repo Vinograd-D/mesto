@@ -6,7 +6,7 @@ const buttonAddCard = document.querySelector('.profile__add-button')
 
 const popupCloseButtons = document.querySelectorAll('.popup__close-button')
 
-const formEditProfile = document.querySelector('form[name = "editProfile"]')
+const formEditProfile = document.querySelector('form[name = "editProfile"]') // это <form>...</form>
 const formAddCard = document.querySelector('form[name = "addCard"]')
 
 const popupEditProfile = document.querySelector('.popup_action_edit-profile')
@@ -48,38 +48,42 @@ const likeItem = (e) => e.target.classList.toggle("elements__like-button_active"
 // function opened modal window
 function openPopup(pop) {
   pop.classList.add('popup_open')
-//  document.addEventListener('keydown', handlerEscClose)
- // document.addEventListener('keydown', handlerEscClose.bind(null, pop))
-//   document.addEventListener('keydown', function(e) {
-//     let keyCode = e.key
-//     console.log('d ' + keyCode)
-//     if (keyCode === 'Escape') {
-//       console.log(keyCode)
-//       closePopup(pop)
- // window.close()
- // this.close()
- //     }
- //  })
+  document.addEventListener('keydown', handlerEscClose)
+  // document.addEventListener('keydown', handlerEscClose.bind(null, pop))
+  // document.addEventListener('keydown', function (e) {
+  //   let keyCode = e.key
+  //   console.log('d ' + keyCode)
+  //   if (keyCode === 'Escape') {
+  //     console.log(keyCode)
+  //     closePopup(pop)
+  //     window.close()
+  //     this.close()
+  //   }
+  // })
 }
 
 //function closed modal window
 function closePopup(pop) {
   pop.classList.remove('popup_open')
- // document.removeEventListener('keydown', handlerEscClose)
+  document.removeEventListener('keydown', handlerEscClose)
 }
 
 
 // close modal push esc
-// function handlerEscClose(pop ,e) { //  не совсем понимаю но кажется они не видят друг друга хоть и закрывает
-//   let keyCode = e.key
-//   console.log('d ' + keyCode)
-//       if (keyCode === 'Escape')  {
-//         console.log(keyCode)
-//         closePopup(popupEditProfile)
-//         closePopup(popupAddCard)
-//         closePopup(popupImage)
-//     }
-// }
+function handlerEscClose(e) { //  не совсем понимаю, но кажется они не видят друг друга хоть и закрывает
+  let keyCode = e.key //
+  console.log('d ' + keyCode)
+  if (keyCode === 'Escape') {
+    console.log(keyCode)
+    // window.close()
+    // this.close()
+    closePopup(popupEditProfile)
+    closePopup(popupAddCard)
+    closePopup(popupImage)
+    //  closePopup(pop)
+
+  }// document.removeEventListener('keydown', handlerEscClose)
+}
 
 
 //---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=---=--=-=-==-===-==-=--=---=--=-==-===-==-=--=
