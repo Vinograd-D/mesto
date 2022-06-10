@@ -3,4 +3,11 @@
   -o-object-fit: cover;
   object-fit: cover;
   height: 282px;
+  cursor: pointer;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease
+}
+
+.elements__picture:hover {
+  opacity: .5;
 }
